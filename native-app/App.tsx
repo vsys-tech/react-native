@@ -1,12 +1,12 @@
 import {View} from 'react-native';
-import Goals from "./comps/Goal/Goals";
 import {GoalFormStyles} from "./comps/Goal/GoalFormStyles";
+import Goals from "./comps/Goal/Goals";
 
 export default function App() {
-  return (
-      <View style={GoalFormStyles.appContainer}>
-        <Goals/>
-      </View>
-  );
+    return (
+        <View style={GoalFormStyles.appContainer}>
+            <Goals/>
+        </View>
+    );
 }
 

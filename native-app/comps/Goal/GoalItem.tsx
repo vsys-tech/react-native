@@ -1,23 +1,24 @@
 import {Pressable, Text, View} from "react-native";
-import {GoalFormStyles} from "./GoalFormStyles";
 import React from "react";
 import {GoalProps} from "../../types/GoalsProps";
+import {GoalFormStyles} from "./GoalFormStyles";
 
-
-const GoalItem = ({item, onPress}: GoalProps) => {
+const GoalItem = (props: GoalProps) => {
 
     const goalSelectHandler = (key: string) => {
-        onPress(key);
+       // console.log("on goal select", key)
+        props.onPress(key);
     }
 
     return (
-        <View key={item.key}>
-            <Pressable android_ripple={{color:'#dddddd'}}
-                             onPress={() => goalSelectHandler(item.key)}
-                              style={({pressed}) => pressed && GoalFormStyles.listItem}
+
+        <View key={props.element.key}>
+            <Pressable android_ripple={{color: '#dddddd'}}
+                       onPress={() => goalSelectHandler(props.element.key)}
+                       style={(pressed) => pressed && GoalFormStyles.listItem}
             >
                 <Text style={GoalFormStyles.listText}>
-                    {item.text}
+                    {props.element.text}
                 </Text>
             </Pressable>
         </View>

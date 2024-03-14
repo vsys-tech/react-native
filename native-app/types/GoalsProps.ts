@@ -6,14 +6,13 @@ export type GoalTextProps = {
 }
 
 
-// goal list
 export type GoalItemProps = {
     text: string,
     key: string
 }
 
 export type GoalProps = {
-    item: GoalItemProps,
+    element: GoalItemProps,
     onPress: (key: string) => void
 }
 

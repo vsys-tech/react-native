@@ -1,9 +1,9 @@
-import {FlatList, Text, View} from "react-native";
 import GoalForm from "./GoalForm";
 import React, {useState} from "react";
 import {GoalItemProps} from "../../types/GoalsProps";
 import {GoalFormStyles} from "./GoalFormStyles";
 import GoalItem from "./GoalItem";
+import {FlatList, ListRenderItemInfo, Text, View} from "react-native";
 
 const Goals = () => {
 
@@ -20,26 +20,28 @@ const Goals = () => {
     }
 
     const OnGoalAdded = (enteredGoalText: string) => {
-        setCourseGoals((currentCourseGoals: GoalItemProps[]) =>
+        const randomValue = Math.random().toString()
+        setCourseGoals((currentCourseGoals) =>
             [...currentCourseGoals,
-                {text: enteredGoalText, key: Math.random().toString()}
+                {text: enteredGoalText, key: randomValue}
             ]);
     }
-
 
     return (
         <View style={GoalFormStyles.appContainer}>
             <View>
-                <GoalForm onGoalAdd={OnGoalAdded}/>
+                <GoalForm onGoalAdd={text => OnGoalAdded(text)}/>
             </View>
             {
                 courseGoals.length > 0 ?
                     <View style={GoalFormStyles.listContainer}>
                         <FlatList data={courseGoals}
-                                  renderItem={(item) =>
-                                      <GoalItem item={item.item} onPress={onGoalSelect}/>
-
+                                  renderItem={(item:ListRenderItemInfo<GoalItemProps>) =>
+                                      <GoalItem element={item.item}
+                                                onPress={(key) => onGoalSelect(key)}
+                                      />
                                   }
+                                  keyExtractor={item => item.key}
                         />
                     </View>
                     : <View><Text>No Data</Text></View>

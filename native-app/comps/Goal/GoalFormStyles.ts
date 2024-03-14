@@ -42,17 +42,20 @@ export const GoalFormStyles = StyleSheet.create({
         color: 'white'
     },
     listContainer: {
-        flex: 5
+        flex: 4
     },
     listItem: {
-        padding: 8,
-        margin: 8,
+        padding:8,
+        marginLeft:0,
+        margin: 10,
+        width: "93%",
         borderRadius: 12,
         borderWidth: 1,
-        backgroundColor: '#5e0acc',
-        opacity : 0.5
+        backgroundColor: '#5f09d0',
+        opacity : 0.75
     },
     listText: {
-        color: "white"
+        color: '#ffffff',
+        fontSize: 15,
     }
 });
